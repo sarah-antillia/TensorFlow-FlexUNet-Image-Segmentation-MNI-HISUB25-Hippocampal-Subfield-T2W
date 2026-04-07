@@ -144,10 +144,7 @@ The folder structure of the orginal mri_dataset of MNI-HISUB25 is the following.
 We used a simple Python script and the following class-color mapping table to generate our PNG dataset with colorized masks
 from <b>s*_hippolabels_hres_L_MNI.nii.gz, s*_hippolabels_hres_R_MNI.nii.gz and s*_t2w_hires_defaced_MNI.nii.gz 
 </b> NIfTI files.<br><br>
-<!--
-<b>class_color_map ={Subiculum:blue, CA1-3:green, CA4-DG:red } </b>
--->
-<table border="1" style="border-collapse: collapse;">
+<table>
 <tr><th>Index</th><th>Class</th><th>Color </th><th>RGB triplet</th></tr>
 <tr>
 <td>1</td><td>Subiculum</td><td>blue</td><td>(0,0,255)</td><tr>
