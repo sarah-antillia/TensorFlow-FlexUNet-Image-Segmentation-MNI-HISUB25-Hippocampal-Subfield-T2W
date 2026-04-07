@@ -112,7 +112,7 @@ CC BY-NC-SA 3.0</a>)
 <b>MNI-HISUB25-T2W Statistics</b><br>
 <img src ="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/MNI-HISUB25-T2W_Statistics.png" width="512" height="auto"><br>
 <br><br>
-As shown above, the number of images of train and valid datasets is large enough to use for the
+As shown above, the number of images of train and valid datasets is not so large to use for the
  training set of our segmentation model.
 <br><br>
 <h3>2.2 Derivation of MNI-HISUB25-T2W </h3>
