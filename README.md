@@ -1,6 +1,10 @@
-<h2>TensorFlow-FlexUNet-Image-Segmentation-MNI-HISUB25-Hippocampal-Subfield-T2W (2026/04/07)</h2>
+<h2>TensorFlow-FlexUNet-Image-Segmentation-MNI-HISUB25-Hippocampal-Subfield-T2W (Updated: 2026/04/29)</h2>
 Sarah T. Arai<br>
-Software Laboratory antillia.com<br><br>
+Software Laboratory antillia.com<br>
+<ul>
+<li>2026/04/29: Updated infer3d method of <a href="./src/TensorFlowFlexModel.py">TensorFlowFexModel.py</a>, and ran 5.infer3d.bat.</li>
+<li>2026/04/29: Generated overlays.gif from maskoverlay PNG files by running 6.video3d.bat.</li>
+</ul>
 This is the first experiment of Image Segmentation for <b>MNI-HISUB25-T2W</b>
  based on 
 our <a href="./src/TensorFlowFlexUNet.py">TensorFlowFlexUNet</a>
@@ -375,6 +379,108 @@ ground truth masks.
 </tr>
 </table>
 <hr>
+<br>
+<h3>
+6 3D Volume Segmentation
+</h3>
+Please move <b>./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W</b> folder, and run the following bat file to infer images segmentation for 2D slices of 3D volume NIfTI files
+ by the Trained-TensorFlowFlexUNet model for MNI-HISUB25-T2W.<br>
+<pre>
+>./5.infer3d.bat
+</pre>
+This simply runs the following command.
+<pre>
+>python ../../../src/TensorFlowFlexUNet3DInferencer.py ./train_eval_infer.config
+</pre>
+
+<b>infer3d section </b> in <a href="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/train_eval_infer.config">
+train_eval_infer.config
+<a></b>
+<pre>
+[infer3d] 
+;Specify an images_dir which contains NIfTI files
+images_dir    = "./mini_test_3d/images/"
+output_dir    = "./mini_test_3d_output/"
+slice_shape_order = "hwd"
+slice_resize   = (512,512) 
+slice_rotation = cv2.ROTATE_90_CLOCKWISE 
+mask_overlay  = True
+</pre>
+<hr>
+<b>Actual Image Segmentation for 2D Slices of a MNI-HISUB25-T2W NIfTI</b><br>
+Some Slices, Inferred Masks and Mask overlays for a 3D volume <b>s05_t2w_hires_defaced_MNI.nii.gz</b> file.<br>
+<br>
+<b>class_color_map ={Subiculum:blue, CA1-3:green, CA4-DG:red } </b>
+<br>
+<table>
+<tr>
+<th>Input: Slice</th>
+<th>Prediction: Inferred mask</th>
+<th>Mask Overlay</th>
+</tr>
+<tr>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/slices/10117.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/masks/10117.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/overlays/10117.png" width="320" height="auto"></td>
+</tr>
+<tr>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/slices/10120.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/masks/10120.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/overlays/10120.png" width="320" height="auto"></td>
+</tr>
+<tr>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/slices/10168.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/masks/10168.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/overlays/10168.png" width="320" height="auto"></td>
+</tr>
+<tr>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/slices/10175.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/masks/10175.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/overlays/10175.png" width="320" height="auto"></td>
+</tr>
+<tr>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/slices/10182.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/masks/10182.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/overlays/10182.png" width="320" height="auto"></td>
+</tr>
+<tr>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/slices/10187.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/masks/10187.png" width="320" height="auto"></td>
+<td><img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/mini_test_3d_output/s05_t2w_hires_defaced_MNI.nii.gz/overlays/10187.png" width="320" height="auto"></td>
+</tr>
+</table>
+<hr>
+<br>
+<h3>
+7 MaskOverlay Video of 3D Volume Segmentation
+</h3>
+Please move to <b>./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W</b> folder, and run the following bat file 
+to generate <b>overlays.mp4</b> or <b>overlay.gif</b> for MaskOverlays of 3D Volume Segmentation. <br>
+<pre>
+>./6.video3d.bat
+</pre>
+This simply runs the following command.
+<pre>
+>python ../../../src/MaskOverlayVideoGenerator.py ./train_eval_infer.config
+</pre>
+<br>
+
+<b>infer3d section </b> in <a href="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/train_eval_infer.config">
+train_eval_infer.config
+<a></b>
+
+<pre>
+[infer3d] 
+mask_overlay  = True
+;Specify ".mp4" or ".gif".
+;video_fileformat  = ".mp4"
+video_fileformat  = ".gif"
+</pre>
+<br>
+<b>overlays.gif</b><br>
+<img src="./projects/TensorFlowFlexUNet/MNI-HISUB25-T2W/video_3d/overlays.gif">
+<br>
+
 <br>
 <h3>
 References
